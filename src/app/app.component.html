@@ -1,4 +1,99 @@
-<h1>
-  {{title}}
-</h1>
-<router-outlet></router-outlet>
+<app-cards-container class="contents"
+  [maxWidth]="640"
+  [minWidth]="280"
+  [gutter]="10"
+  [watch]="componentFilter.value"
+  [notShy]="false">
+  <app-card class="component-card" *ngFor="let component of components">
+      <div class="card-content">
+          <div class="top-section">
+              <div class="unfinished-badge" *ngIf="component.unfinished">not ready!</div>
+              <div class="section-label">{{ component.name }} {{ component.type }}</div>
+              <div class="element">
+                  <app-compare *ngIf="component.name == 'compare'" [data]="compareData" [total_height]="300"></app-compare>
+                  <app-date-picker *ngIf="component.name == 'datepicker-input'" [(date)]="date" [utc]="false" [timepicker]="true"></app-date-picker>
+                  <app-combo-box class="combo-box" *ngIf="component.name == 'combo-box'" [options]="options" [placeholder]="'Type something'" [label]="true" [(model)]="answer"></app-combo-box>
+                  <app-progress-large *ngIf="component.name == 'progress-large'" [size]="'medium'" [percent]="progressPercent" [checkComplete]="false">
+                      <div class="progress-content">
+                          <div class="progress-percent">{{ Math.round(progressPercent * 100) }}<span class="percent-sign">%</span></div>
+                          <div class="progress-label">complete</div>
+                      </div>
+                  </app-progress-large>
+                  <app-progress-small class="inline-progress" *ngIf="component.name == 'progress-small'" [percent]="0.25" [showPercent]="true" [shadow]="true"></app-progress-small>
+                  <app-progress-small class="inline-progress" *ngIf="component.name == 'progress-small'" [percent]="0.5" [showPercent]="true" [shadow]="true"></app-progress-small>
+                  <app-progress-small class="inline-progress" *ngIf="component.name == 'progress-small'" [percent]="0.75" [showPercent]="true" [shadow]="true"></app-progress-small>
+                  <app-progress-small class="inline-progress" *ngIf="component.name == 'progress-small'" [percent]="progressPercent" [showPercent]="true" [shadow]="true"></app-progress-small>
+                  <app-arc-progress *ngIf="component.name == 'arc-progress'" [size]="'medium'" [colors1]="colorarray" [percent1]="progressPercent" [percent2]="progressPercent"></app-arc-progress>
+                  <app-progress-bar *ngIf="component.name == 'progress-bar'" [fraction]="progressPercent * 100" [total]="100" [showFraction]="true"></app-progress-bar>
+                  <div class="small-pad" *ngIf="component.name == 'button'">
+                      <app-button [icon]="arrowicon" (click)="log('pressed button')" [disabled]="false">button</app-button>
+                  </div>
+                  <div class="small-pad" *ngIf="component.name == 'button'">
+                      <app-button [secondary]="true" [dim]="false" [icon_left]="arrow_left_icon" (click)="log('pressed button')">button 2</app-button>
+                  </div>
+                  <div class="small-pad" *ngIf="component.name == 'button'">
+                      <app-button [color]="'red'" (click)="log('pressed button')">button 3</app-button>
+                  </div>
+                  <app-text-box *ngIf="component.name == 'textbox'" [label]="true" [placeholder]="'Type Something'"></app-text-box>
+                  <app-text-box *ngIf="component.name == 'textbox'" [placeholder]="'Search'" [iconInactive]="searchblack" [iconActive]="searchblue"></app-text-box>
+                  <app-slider *ngIf="component.name == 'slider'" [(model)]="progressPercent" [watch]="componentFilter.value"></app-slider>
+                  <app-switch [(model)]="model" *ngIf="component.name == 'switch'"></app-switch>
+                  <app-card *ngIf="component.name == 'card'">
+                      <div class="example-card-content">Example Card</div>
+                  </app-card>
+                  <app-checkbox *ngIf="component.name == 'checkbox'" [(model)]="model">Label</app-checkbox>
+                  <div *ngIf="component.name == 'radio'" class="radio-container">
+                      <app-radio class="block" [(model)]="model" [value]="true">true</app-radio>
+                      <app-radio class="block" [(model)]="model" [value]="false">false</app-radio>
+                  </div>
+                  <app-select
+                      *ngIf="component.name == 'select'"
+                      [(model)]="answer"
+                      [options]="options">
+                  </app-select>
+                  <app-question
+                      *ngIf="component.name == 'question' && component.type == 'yesno'"
+                      [type]="'yesno'"
+                      [(model)]="answer">
+                      <div class="example-question-text">Yes / No example</div>
+                  </app-question>
+                  <app-question
+                      *ngIf="component.name == 'question' && component.type == 'multiplechoice'"
+                      [type]="'multiplechoice'"
+                      [(model)]="answer"
+                      [options]="options">
+                      <div class="example-question-text">Multiple Choice Example</div>
+                  </app-question>
+                  <app-question
+                      *ngIf="component.name == 'question' && component.type == 'multipleanswer'"
+                      [type]="'multipleanswer'"
+                      [(model)]="multiple_options">
+                      <div class="example-question-text">Multiple Answer Example</div>
+                  </app-question>
+                  <app-question
+                      *ngIf="component.name == 'question' && component.type == 'select'"
+                      [type]="'select'"
+                      [(model)]="answer"
+                      [options]="options">
+                      <div class="example-question-text">Select Example</div>
+                  </app-question>
+                  <app-question
+                      *ngIf="component.name == 'question' && component.type == 'freeresponse'"
+                      [type]="'freeresponse'"
+                      [(model)]="answer">
+                      <div class="example-question-text">Free Response Example</div>
+                  </app-question>
+                  <div *ngIf="component.name == 'date-picker'" class="date-test-area">
+                      {{ date }}
+                  </div>
+              </div>
+          </div>
+          <div class="bottom-section">
+              <div class="section-label">code sample:</div>
+              <div class="code-sample">
+                  <pre [innerHTML]="component.code | rawHtml"></pre>
+              </div>
+          </div>
+      </div>
+  </app-card>
+</app-cards-container>

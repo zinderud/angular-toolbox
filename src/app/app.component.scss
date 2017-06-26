@@ -1,0 +1,197 @@
+@import '../styles.scss';
+
+
+.contents {
+    position: absolute;
+    top: 120px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
+.component-card {
+    position: absolute;
+    transition: all 0.15s cubic-bezier(0.1,-0.15,0.8,1.25);
+    transition-property: top, left;
+    margin-bottom: 30px;
+}
+.card-content {
+    // overflow: hidden;
+    border-radius: 2px;
+}
+.section-label {
+    position: absolute;
+    font-size: 12px;
+    top: 15px;
+    left: 15px;
+    color: $darkgray;
+}
+.unfinished-badge {
+    font-size: 12px;
+    color: $cream;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    padding: 0 15px;
+    height: 29px;
+    border-radius: 15px;
+    text-align: center;
+    line-height: 29px;
+    background: $red;
+    display: block;
+}
+.top-section {
+    width: 100%;
+    display: block;
+    position: relative;
+    text-align: center;
+    padding: 45px 15px 30px;
+    padding-top: 45px;
+    user-select: none;
+}
+.element {
+    max-width: 300px;
+    margin: 0 auto;
+    display: block;
+}
+.bottom-section {
+    position: relative;
+    background: $lightgray;
+    padding-bottom: 15px;
+}
+.details-button-container {
+    padding: 0 15px;
+    text-align: center;
+}
+.example-card-content {
+    padding: 15px;
+}
+.example-question-text {
+    padding: 15px;
+}
+pre {
+    color: $black;
+    width: 100%;
+    margin: 0;
+    overflow: auto;
+    padding: 15px;
+    padding-top: 40px;
+    white-space: pre-line;
+}
+.small-pad {
+    padding: 5px 0;
+}
+sm-text-box {
+    display: block;
+    margin: 20px auto;
+}
+.progress-content {
+    position: absolute;
+    @extend .abs-center;
+    bottom: 8px;
+    width: 120px;
+    height: 50px;
+    .progress-percent {
+        height: 36px;
+        line-height: 36px;
+        font-size: 30px;
+        position: relative;
+        left: 2px;
+        .percent-sign {
+            font-size: 18px;
+            margin: 0 1px;
+            color: $darkgray;
+        }
+    }
+    .progress-label {
+        height: 14px;
+        line-height: 14px;
+        font-size: 14px;
+        color: $darkgray;
+    }
+}
+.inline-progress {
+    display: inline-block;
+    margin: 5px;
+}
+.block {
+    display: block;
+}
+.radio-container {
+    text-align: left;
+    display: inline-block;
+}
+sm-question {
+    display: block;
+    margin-bottom: 15px;
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+.date-test-area {
+    font-size: 12px;
+    margin: 15px 0;
+}
+.card-deck-content {
+    padding: 20px;
+    min-height: 165px;
+    color: $darkgray;
+    text-align: left;
+}
+.section-title {
+    height: 40px;
+    line-height: 40px;
+    text-align: left;
+}
+.details-container {
+    padding: 0 20px;
+    text-align: left;
+    max-height: 75vh;
+    overflow: auto;
+}
+.sample-modal-content {
+    padding: 15px;
+}
+.api {
+    border-bottom: 2px solid $lightgray;
+    padding: 20px 0;
+    font-size: 12px;
+    &:first-child {
+        padding-top: 0;
+    }
+    &:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+}
+.api-line-item {
+    line-height: 20px;
+    min-height: 20px;
+    position: relative;
+}
+.api-label {
+    position: absolute;
+    height: 20px;
+    left: 0;
+    right: 0;
+    text-align: left;
+    color: $darkgray;
+}
+.api-item-name,
+.api-item-type,
+.api-item-format {
+    position: absolute;
+    height: 20px;
+    left: 0;
+    right: 0;
+    text-align: right;
+    color: $blue;
+}
+.api-item-description {
+    left: 0;
+    right: 0;
+    padding-top: 20px;
+    text-align: left;
+    line-height: 20px;
+}
