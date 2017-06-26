@@ -1,0 +1,88 @@
+@import '../../styles.scss';
+
+.progress-large-container {
+    width: 120px;
+    height: 120px;
+    display: block;
+    margin: 0 auto;
+    position: relative;
+    font-family: "Roboto", sans-serif;
+    &.medium-container {
+        width: 180px;
+        height: 180px;
+    }
+    &.large-container {
+        width: 240px;
+        height: 240px;
+    }
+}
+.circle-container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: rotate(90deg);
+    opacity: 1;
+    visibility: visible;
+    transition: all 0.5s ease;
+    transition-property: visibility, opacity;
+    .percent-circle {
+        stroke: $green;
+        transition: all 0.25s ease 0.25s;
+    }
+    .shadow-circle {
+        stroke: $lightgray;
+        opacity: 0.5;
+    }
+    &.hide-circle {
+        visibility: none;
+        opacity: 0;
+    }
+}
+.percent-label {
+    width: 100%;
+    height: 100%;
+    line-height: 120px;
+    text-align: center;
+    font-size: 24px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    color: $darkgray;
+    font-family: "Roboto", sans-serif;
+}
+.complete {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    background: $green;
+    transform: scale(0.25);
+    transition: all 0.25s cubic-bezier(0.25,-0.15,0.75,1.25);
+    .checkmark {
+        width: 48px;
+        height: 48px;
+        position: absolute;
+        @extend .abs-center;
+        stroke-dashoffset: 104;
+        stroke-dasharray: 104;
+        transition: all 0.15s ease;
+    }
+    &.visible {
+        visibility: visible;
+        opacity: 1;
+        transform: scale(1);
+        .checkmark {
+            stroke-dashoffset: 0;
+            transition: all 0.5s ease 0.25s;
+        }
+    }
+}

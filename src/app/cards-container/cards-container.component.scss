@@ -1,0 +1,22 @@
+@import '../../styles.scss';
+
+.cards-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.curtain {
+    position: absolute;
+    @extend .abs-center;
+    background: $cream;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    z-index: 2;
+    transition: all 0.25s ease;
+    &.visible {
+        opacity: 1;
+        visibility: visible;
+        transition: none;
+    }
+}

@@ -1,0 +1,16 @@
+<label class="checkbox-container">
+    <input class="ugly-checkbox"
+        type="checkbox"
+        [ngModel]="model"
+        (ngModelChange)="change($event)"
+    />
+    <div class="nice-checkbox">
+        <img
+            [src]="checkmark"
+            [ngClass]="{ 'visible': model }"
+        />
+    </div>
+</label>
+<div class="checkbox-label">
+    <ng-content></ng-content>
+</div>

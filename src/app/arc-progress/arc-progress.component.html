@@ -1,0 +1,44 @@
+<div class="arc-progress-container">
+    <svg class="circles-container" [attr.width]="diameter" [attr.height]="diameter / 2">
+        <svg:circle
+            class="shadow-arc-1"
+            stroke-linecap="butt"
+            stroke-width="10"
+            fill="none"
+            [attr.cx]="diameter / 2" [attr.cy]="diameter / 2" [attr.r]="(diameter / 2) - 5"
+        />
+        <svg:circle #arc1
+            class="arc-1"
+            stroke-width="10"
+            stroke-linecap="butt"
+            fill="none"
+            [attr.cx]="diameter / 2" [attr.cy]="diameter / 2" [attr.r]="(diameter / 2) - 5"
+            [attr.transform]="'rotate(-180,' + (diameter / 2) + ', ' + (diameter / 2) +')'"
+            [ngStyle]="{
+                'stroke-dashoffset': dashOffset1,
+                'stroke-dasharray': dashArray1,
+                'stroke': strokecolor1
+            }"
+        />
+        <svg:circle
+            class="shadow-arc-2"
+            stroke-width="10"
+            stroke-linecap="butt"
+            fill="none"
+            [attr.cx]="diameter / 2" [attr.cy]="diameter / 2" [attr.r]="(diameter / 3) - 5"
+        />
+        <svg:circle #arc2
+            class="arc-2"
+            stroke-width="10"
+            stroke-linecap="butt"
+            fill="none"
+            [attr.cx]="diameter / 2" [attr.cy]="diameter / 2" [attr.r]="(diameter / 3) - 5"
+            [attr.transform]="'rotate(-180,' + (diameter / 2) + ', ' + (diameter / 2) + ')'"
+            [ngStyle]="{
+                'stroke-dashoffset': dashOffset2,
+                'stroke-dasharray': dashArray2,
+                'stroke': strokecolor2
+            }"
+        />
+    </svg>
+</div>

@@ -1,0 +1,80 @@
+@import '../../styles.scss';
+
+.question-text {
+    // border-bottom: 2px solid $lightgray;
+    text-align: left;
+    font-size: 14px;
+}
+.response-section {
+    padding: 15px;
+    position: relative;
+    min-height: 50px;
+}
+
+.yes-no-container {
+    height: 50px;
+    display: block;
+    position: absolute;
+    width: 100%;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    font-size: 0;
+    text-align: right;
+    .yes-button,
+    .no-button,
+    .na-button {
+        display: inline-block;
+        height: 40px;
+        margin: 5px 0;
+        line-height: 40px;
+        padding: 0 15px;
+        cursor: pointer;
+        color: $darkgray;
+        border-radius: 4px;
+    }
+    .response.yes-button.active {
+        background: $green;
+        color: $cream;
+    }
+    .response.no-button.active {
+        background: $red;
+        color: $cream;
+    }
+    .response.na-button.active {
+        background: $lightblue;
+        color: $cream;
+    }
+    .response {
+        transition: all 0.15s ease;
+        position: relative;
+        margin-right: 5px;
+        font-size: 14px;
+        &:hover {
+            background: $lightgray;
+        }
+    }
+}
+.multiple-choice-container,
+.multiple-answer-container {
+    text-align: left;
+}
+.option {
+    height: 40px;
+}
+.free-response-textarea {
+    width: 100%;
+    border: 2px solid $lightgray;
+    border-radius: 4px;
+    margin: 0;
+    height: 40px;
+    display: block;
+    background: $cream;
+    padding: 15px;
+    min-height: 50px;
+    font-size: 14px;
+    &:focus {
+        outline: none;
+        border-color: $blue;
+    }
+}

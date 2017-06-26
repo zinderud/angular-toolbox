@@ -1,0 +1,19 @@
+@import '../../styles.scss';
+
+.arc-progress-container {
+    overflow: hidden;
+}
+
+.circles-container { }
+
+.shadow-arc-1,
+.shadow-arc-2 {
+    stroke: $lightgray;
+    opacity: 0.5;
+}
+
+.arc-1,
+.arc-2 {
+    stroke: $green;
+    transition: 0.25s all ease 0.25s;
+}

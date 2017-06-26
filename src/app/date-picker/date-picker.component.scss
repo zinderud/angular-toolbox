@@ -1,0 +1,159 @@
+@import '../../styles.scss';
+
+.datepicker-container {
+    width: 100%;
+    min-width: 224px;
+    position: relative;
+    display: block;
+}
+.header-container {
+    height: 40px;
+    line-height: 40px;
+    width: 100%;
+    position: relative;
+}
+.monthname {
+    text-align: center;
+}
+.previous-month,
+.next-month {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 40px;
+    height: 40px;
+    margin: auto;
+    border-radius: 20px;
+    background: $cream;
+    transition: $easeall;
+    cursor: pointer;
+    &:hover {
+        background: $lightgray;
+    }
+    img {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        width: 24px;
+        height: 24px;
+    }
+}
+.previous-month {
+    left: 0;
+}
+.next-month {
+    right: 0;
+}
+.calendar-container {
+    display: block;
+    width: 100%;
+    text-align: left;
+}
+.spacer {
+    margin: 0;
+    display: inline-block;
+    height: 40px;
+    vertical-align: top;
+    float: left;
+}
+.day {
+    display: inline-block;
+    color: $darkgray;
+    height: 40px;
+    min-width: 32px;
+    line-height: 40px;
+    width: calc(100% / 7);
+    cursor: pointer;
+    text-align: center;
+    transition: $easeall;
+    border-radius: 4px;
+    position: relative;
+    vertical-align: top;
+    .selected-indicator {
+        display: block;
+        position: absolute;
+        width: 100%;
+        width: 32px;
+        height: 32px;
+        border-radius: 32px;
+        margin: auto;
+        @extend .abs-center;
+    }
+    .day-number {
+        position: absolute;
+        width: 100%;
+        height: 40px;
+        text-align: center;
+        line-height: 40px;
+        cursor: pointer;
+        @extend .no-select;
+        @extend .abs-center;
+    }
+    &.selected .day-number {
+        font-weight: 500;
+        color: $cream;
+    }
+    &.selected .selected-indicator {
+        background: $red;
+    }
+}
+.timepicker-container {
+    margin-top: 20px;
+}
+.time-row {
+    height: 40px;
+    line-height: 40px;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+.timebox {
+    vertical-align: top;
+    width: 40px;
+    height: 88px;
+    display: inline-block;
+    position: relative;
+}
+.uparrow,
+.downarrow {
+    height: 24px;
+    width: 24px;
+    position: absolute;
+    cursor: pointer;
+    left: 0;
+    right: 0;
+    margin: auto;
+    &.black {
+        opacity: 0;
+        transition: $easeall;
+    }
+    &.black:hover {
+        opacity: 1;
+    }
+    &.black.active {
+        opacity: 1;
+    }
+}
+.uparrow {
+    top: 0;
+}
+.downarrow {
+    top: 64px;
+}
+.number {
+    height: 40px;
+    width: 40px;
+    border: 2px solid $lightgray;
+    border-radius: 4px;
+    @extend .abs-center;
+    position: absolute;
+    text-align: center;
+    font-size: 16px;
+    transition: $easeall;
+    &:focus {
+        outline: none;
+        border-color: $blue;
+    }
+}

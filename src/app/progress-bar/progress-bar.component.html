@@ -1,0 +1,24 @@
+<div class="sm-progress-bar-container">
+    <div class="sm-progress-bar-fraction"
+        #fractionelement
+        *ngIf="showFraction && fraction != 'undefined' && total"
+        [ngStyle]="{
+            'left': fraction_offset
+        }">
+        {{ fraction | number : '1.0-0' }}<span class="fraction-slash">/</span>{{ total }}
+    </div>
+    <div class="sm-progress-bar-total">
+        <div class="sm-progress-bar-complete"
+            *ngIf="!fractionmode"
+            [ngStyle]="{
+                'width': (percent * 100) + '%'
+            }"
+        ></div>
+        <div class="sm-progress-bar-complete"
+            *ngIf="fractionmode"
+            [ngStyle]="{
+                'width': (fraction_percent * 100) + '%'
+            }"
+        ></div>
+    </div>
+</div>

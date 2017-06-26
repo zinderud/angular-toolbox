@@ -1,0 +1,41 @@
+<div class="sm-compare-overflow-container">
+    <div class="sm-compare-container" [ngStyle]="{
+        'height': total_height + 'px'
+    }">
+        <div class="sm-compare-left">
+            <div class="sm-compare-part" *ngFor="let part of data" [ngStyle]="{
+                'height': (((part.number / total) * (total_height - min_height_offset) + 10)) + 'px',
+                'background': part.color
+            }"></div>
+        </div>
+        <div class="sm-compare-middle">
+            <svg class="compare-line" width="50" [attr.height]="total_height" *ngFor="let part of data; let i = index">
+                <path
+                    fill="none"
+                    stroke-width="3"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    [attr.stroke]="part.color"
+                    [attr.d]="
+                        'M0,' + part.position_left +
+                        'c25,0 25,' + (part.position_right - part.position_left) + ' ,50,' + (part.position_right - part.position_left)
+                    "></path>
+            </svg>
+        </div>
+        <div class="sm-compare-right">
+            <div class="part-label-container" *ngFor="let part of data" [ngStyle]="{
+                'color': part.color,
+                'height': (1 / data.length) * 100 + '%'
+            }">
+                <div class="label-contents">
+                    <div class="label-number">
+                        {{ part.number }}
+                    </div>
+                    <div class="label-name" [title]="part.name">
+                        {{ part.name }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

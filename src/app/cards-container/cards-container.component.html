@@ -1,0 +1,10 @@
+<div
+    class="cards-container" [ngStyle]="{'height': container_height+'px'}">
+    <ng-content></ng-content>
+    <div class="curtain"
+        *ngIf="!notShy"
+        [ngClass]="{
+            'visible': curtain
+        }">
+    </div>
+</div>

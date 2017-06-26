@@ -1,0 +1,37 @@
+@import '../../styles.scss';
+
+.slider-container {
+    height: 40px;
+    display: inline-block;
+    width: 100%;
+    position: relative;
+    @extend .no-select;
+    &:before {
+        content: '';
+        display: block;
+        width: calc(100% - 40px);
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        margin: auto;
+        position: absolute;
+        background: $lightgray;
+    }
+}
+.slider-handle {
+    display: block;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    background: $cream;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    border-radius: 50%;
+    border: 2px solid $lightgray;
+}

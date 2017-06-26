@@ -1,0 +1,14 @@
+<label class="radio-container">
+    <input
+        class="ugly-radio"
+        type="radio"
+        [ngModel]="model"
+        [name]="model"
+        (ngModelChange)="change($event)"
+        [value]="value"
+    />
+    <div class="nice-radio"></div>
+</label>
+<div class="radio-label">
+    <ng-content></ng-content>
+</div>

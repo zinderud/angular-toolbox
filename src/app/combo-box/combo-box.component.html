@@ -1,0 +1,45 @@
+<div #comboBoxContainer class="combo-box-container" [ngClass]="{
+    'focused': focused,
+    'suggestions-active': suggestions_active && filtered_options.length > 0,
+    'has-label': label && placeholder
+}">
+    <input class="combo-box-input"
+        #inputElement
+        [(ngModel)]="model"
+        (focus)="focusBox()"
+        (keydown)="pressedKey($event)"
+        (keyup)="textChanged($event)"
+        (blur)="blurBox($event)"
+        type="text"
+    />
+    <div class="placeholder" *ngIf="placeholder" [ngClass]="{
+        'hidden': model || focused,
+        'label': label && (model || focused),
+        'blue-text': label && focused
+    }">{{ placeholder }}</div>
+    <div class="suggestions-container" (mousedown)="clickedSuggestions()" [ngClass]="{
+        'visible': suggestions_active && filtered_options.length > 0
+    }" [ngStyle]="{
+        'min-height': suggestions_active ? (filtered_options.length * 40) + 4 + 'px' : '0',
+        'left': position.x + 'px',
+        'top': position.y + 38 + 'px',
+        'width': width + 'px'
+    }">
+        <div class="option-row"
+            *ngFor="let option of filtered_options; let i = index;"
+            [ngClass]="{
+                'current': i == this.current_option
+            }"
+            (click)="selectOption(option)">
+            {{ option }}
+        </div>
+    </div>
+    <div class="dropdown-icon" (click)="activateSuggestions()" (mousedown)="clickedDropdown()">
+        <svg width="24" height="24" class="dropdown-icon">
+            <path
+                stroke="none"
+                d="M7,9 l5,7 l5,-7"
+            />
+        </svg>
+    </div>
+</div>

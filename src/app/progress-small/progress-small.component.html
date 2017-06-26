@@ -1,0 +1,40 @@
+<div class="progress-small-container">
+    <svg class="circle-container" width="40" height="40" [ngClass]="{'hide-circle': percent >= 1}">
+        <svg:circle
+            class="shadow-circle"
+            cx="20" cy="20" r="19"
+            stroke-width="2"
+            fill="none"
+            *ngIf="shadow"
+        />
+        <svg:circle #circle
+            class="percent-circle"
+            cx="20" cy="20" r="19"
+            stroke-width="2"
+            fill="none"
+            [ngStyle]="{
+                'stroke-dashoffset': dashOffset,
+                'stroke-dasharray': dashArray,
+                'stroke': strokecolor
+            }"
+        />
+    </svg>
+    <div class="percent-label" *ngIf="showPercent && percent < 1">{{ Math.round(percent * 100) }}</div>
+<!--
+    <div class="complete" *ngIf="percent >= 1">
+        <img class="checkmark" [src]="checkmark"/>
+    </div>
+ -->
+    <div class="complete"
+        [ngClass]="{
+            'visible': percent >= 1
+        }"
+        [ngStyle]="{
+            'background-color': strokecolor
+        }">
+
+        <svg class="checkmark" height="24" width="24">
+            <path fill="none" stroke="#FFFEFA" stroke-width="2" d="M4,12.5 l5,5 l11,-11"/>
+        </svg>
+    </div>
+</div>

@@ -1,0 +1,82 @@
+<div class="datepicker-container">
+    <div class="header-container">
+        <div class="previous-month" (click)="prevMonth()">
+            <img [src]="arrow_left"/>
+        </div>
+        <div class="monthname">{{ monthNames[active_month_index] }} {{ active_date.getFullYear() }}</div>
+        <div class="next-month" (click)="nextMonth()">
+            <img [src]="arrow_right"/>
+        </div>
+    </div>
+    <div class="calendar-container">
+        <div class="spacer" [ngStyle]="{
+            'width':  'calc((100% / 7) * ' + days_offset + ')'
+        }"></div>
+        <div
+            class="day"
+            *ngFor="let day of active_month_array; let i = index;"
+            (click)="selectDay(day)"
+            [ngClass]="{
+                'selected': day.getDate() == date.getDate() && active_date.getMonth() == date.getMonth()
+            }">
+            <div class="selected-indicator"></div>
+            <div class="day-number">{{ day.getDate() }}</div>
+        </div>
+    </div>
+    <div class="timepicker-container" *ngIf="timepicker">
+        <div class="timebox hours">
+            <img class="uparrow" [src]="arrow_up_gray"/>
+            <img class="uparrow black" [src]="arrow_up"
+                (click)="addHour()"
+                [ngClass]="{'active': hourup}"
+            />
+            <input class="number" type="text" #hour
+                (keydown)="adjustHour($event)"
+                (keyup)="releaseTimeButtons()"
+                (blur)="manualAdjustHour($event)"
+                value="{{ date | date: 'h' }}"
+            />
+            <img class="downarrow" [src]="arrow_down_gray"/>
+            <img class="downarrow black" [src]="arrow_down"
+                (click)="subtractHour()"
+                [ngClass]="{'active': hourdown}"
+            />
+        </div>
+        <div class="timebox minutes">
+            <img class="uparrow" [src]="arrow_up_gray"/>
+            <img class="uparrow black" [src]="arrow_up"
+                (click)="addMinutes()"
+                [ngClass]="{'active': minutesup}"
+            />
+            <input class="number" type="text" #minutes
+                (keydown)="adjustMinutes($event)"
+                (keyup)="releaseTimeButtons()"
+                (blur)="manualAdjustMinutes($event)"
+                value="{{ formatMinutes(date) }}"
+            />
+            <img class="downarrow" [src]="arrow_down_gray"/>
+            <img class="downarrow black" [src]="arrow_down"
+                (click)="subtractMinutes()"
+                [ngClass]="{'active': minutesdown}"
+            />
+        </div>
+        <div class="timebox am-pm">
+            <img class="uparrow" [src]="arrow_up_gray"/>
+            <img class="uparrow black" [src]="arrow_up"
+                (click)="toggleAmPm()"
+                [ngClass]="{'active': ampmup}"
+            />
+            <input class="number" type="text" #ampm
+                (keydown)="adjustAmPm($event)"
+                (keyup)="releaseTimeButtons()"
+                (blur)="manualAdjustAmPm($event)"
+                value="{{ date | date: 'a' }}"
+            />
+            <img class="downarrow" [src]="arrow_down_gray"/>
+            <img class="downarrow black" [src]="arrow_down"
+                (click)="toggleAmPm()"
+                [ngClass]="{'active': ampmdown}"
+            />
+        </div>
+    </div>
+</div>

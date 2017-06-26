@@ -1,0 +1,23 @@
+<div class="input-container" [ngClass]="{
+    'has-label': label && placeholder
+}">
+    <input
+        #field
+        type="text"
+        [ngModel]="model"
+        [disabled]="disabled"
+        (ngModelChange)="change($event)"
+        (keyup)="type($event)"
+    />
+    <div class="label" [ngClass]="{
+        'show-label': label,
+        'notempty': model && label,
+        'hidden': model
+    }" (click)="forwardClick()">
+        {{ placeholder }}
+    </div>
+    <div class="icon">
+        <img class="icon-inactive" [src]="iconInactive" *ngIf="iconInactive" />
+        <img class="icon-active" [src]="iconActive" *ngIf="iconActive" />
+    </div>
+</div>

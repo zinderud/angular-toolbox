@@ -1,0 +1,15 @@
+<div class="button {{ color }}"
+    [ngClass]="{
+        'button-with-icon': icon,
+        'button-with-icon-left': icon_left,
+        'secondary-button': secondary,
+        'button-disabled': disabled
+    }">
+    <div class="outline" *ngIf="secondary"></div>
+    <div class="dim" *ngIf="dim"></div>
+    <div class="lighten" *ngIf="lighten"></div>
+    <img class="icon-left" [src]="icon_left" *ngIf="icon_left"/>
+        <div class="text" *ngIf="title">{{ title }}</div>
+        <div class="text" *ngIf="!title"><ng-content></ng-content></div>
+    <img class="icon" [src]="icon" *ngIf="icon"/>
+</div>

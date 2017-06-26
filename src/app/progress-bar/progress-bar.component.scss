@@ -1,0 +1,40 @@
+@import '../../styles.scss';
+
+.sm-progress-bar-container {
+    display: inline-block;
+    width: 100%;
+    height: 40px;
+    position: relative;
+}
+.sm-progress-bar-total {
+    height: 10px;
+    width: 100%;
+    background: rgba(227,222,209,0.5);
+    position: absolute;
+    top: 10px;
+    bottom: 0;
+    margin: auto;
+    overflow: hidden;
+}
+.sm-progress-bar-complete {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background: $blue;
+    min-width: 4px;
+    transition: 0.25s ease all 0.25s;
+}
+.sm-progress-bar-fraction {
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: left;
+    font-size: 14px;
+    color: $blue;
+    transition: 0.25s ease all 0.25s;
+}
+.fraction-slash {
+    color: $lightblue;
+    padding: 0 3px 0 5px;
+}

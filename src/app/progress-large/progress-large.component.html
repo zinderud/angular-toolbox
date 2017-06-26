@@ -1,0 +1,37 @@
+<div class="progress-large-container" [ngClass]="{
+    'medium-container': size == 'medium',
+    'large-container': size == 'large'
+}">
+    <svg class="circle-container" [attr.width]="diameter" [attr.height]="diameter" [ngClass]="{'hide-circle': percent >= 1 && checkComplete}">
+        <svg:circle
+            class="shadow-circle"
+            [attr.cx]="diameter / 2" [attr.cy]="diameter / 2" [attr.r]="(diameter / 2) - 5"
+            stroke-width="10"
+            fill="none"
+            *ngIf="shadow"
+        />
+        <svg:circle #circle
+            class="percent-circle"
+            [attr.cx]="diameter / 2" [attr.cy]="diameter / 2" [attr.r]="(diameter / 2) - 5"
+            stroke-width="10"
+            stroke-linecap="butt"
+            fill="none"
+            [ngStyle]="{
+                'stroke-dashoffset': dashOffset,
+                'stroke-dasharray': dashArray,
+                'stroke': strokecolor
+            }"
+        />
+    </svg>
+    <ng-content></ng-content>
+    <div class="complete"
+        *ngIf="checkComplete"
+        [ngClass]="{
+            'visible': percent >= 1
+        }"
+    >
+        <svg class="checkmark" height="48" width="48">
+            <path fill="none" stroke="#FFFEFA" stroke-width="2" d="M8,25 l10,10 l22,-22"/>
+        </svg>
+    </div>
+</div>

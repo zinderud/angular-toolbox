@@ -1,0 +1,60 @@
+@import '../../styles.scss';
+
+.checkbox-container {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    position: relative;
+}
+.ugly-checkbox {
+    position: absolute;
+    @extend .abs-center;
+    height: 18px;
+    width: 18px;
+    opacity: 0;
+    &:focus + .nice-checkbox {
+        border-color: $blue;
+    }
+}
+.nice-checkbox {
+    display: block;
+    width: 24px;
+    height: 24px;
+    border: 2px solid $gray;
+    border-radius: 4px;
+    cursor: pointer;
+    position: absolute;
+    background-color: $cream;
+    @extend .abs-center;
+    img {
+        opacity: 0;
+    }
+    img.visible {
+        opacity: 1;
+    }
+    transition: $easeall;
+}
+.nice-checkbox:before {
+    content: '';
+    position: absolute;
+    @extend .abs-center;
+    transform: scale(1);
+    background: $blue;
+    border-radius: 50%;
+    opacity:1;
+    visibility: hidden;
+    transition: none;
+    cursor: pointer;
+}
+.ugly-checkbox:checked + .nice-checkbox:before {
+    transform: scale(2.5);
+    transition: all 1.5s cubic-bezier(0,1,0,1);
+    visibility: visible;
+    opacity: 0;
+}
+.checkbox-label {
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+    vertical-align: top;
+}

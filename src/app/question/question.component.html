@@ -1,0 +1,67 @@
+<app-card>
+    <div class="question-text">
+        <ng-content></ng-content>
+    </div>
+    <div class="response-section">
+        <div class="yes-no-container"
+            *ngIf="type == 'yesno'"
+            [ngClass]="{
+                'answered': model
+            }">
+            <div class="response yes-button"
+                [ngClass]="{'active': model == 'yes'}"
+                (click)="setAnswer('yes')">
+                yes
+            </div>
+            <div class="response no-button"
+                [ngClass]="{'active': model == 'no'}"
+                (click)="setAnswer('no')">
+                no
+            </div>
+        </div>
+        <div class="yes-no-container na"
+             *ngIf="type == 'yesnona'"
+             [ngClass]="{
+                'answered': model
+            }">
+            <div class="response yes-button"
+                 [ngClass]="{'active': model == 'yes'}"
+                 (click)="setAnswer('yes')">
+                yes
+            </div>
+            <div class="response no-button"
+                 [ngClass]="{'active': model == 'no'}"
+                 (click)="setAnswer('no')">
+                no
+            </div>
+            <div class="response na-button"
+                 [ngClass]="{'active': model == 'na'}"
+                 (click)="setAnswer('na')">
+                n/a
+            </div>
+        </div>
+        <div class="multiple-choice-container" *ngIf="type == 'multiplechoice'">
+            <div class="option" *ngFor="let option of options">
+                <app-radio [model]="model" (modelChange)="setAnswer($event)" [value]="option">{{ option }}</app-radio>
+            </div>
+        </div>
+        <div class="free-response-container" *ngIf="type == 'freeresponse'">
+
+        </div>
+        <div class="multiple-answer-container" *ngIf="type == 'multipleanswer'">
+            <div class="option" *ngFor="let option of model">
+                <app-checkbox [model]="option.selected" (modelChange)="toggleAnswer(option, $event)">{{ option.value }}</app-checkbox>
+            </div>
+        </div>
+        <div class="select-container" *ngIf="type == 'select'">
+            <app-select
+                [(model)]="model"
+                (modelChange)="setAnswer($event)"
+                [options]="options">
+            </app-select>
+        </div>
+        <div class="free-response-container" *ngIf="type == 'freeresponse'">
+            <textarea [(ngModel)]="model" (change)="setAnswer($event.target.value)" class="free-response-textarea"></textarea>
+        </div>
+    </div>
+</app-card>

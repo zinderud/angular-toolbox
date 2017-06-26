@@ -1,0 +1,51 @@
+@import '../../styles.scss';
+
+select {
+    height: 100%;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    background: $cream;
+    appearance: none;
+    width: 100%;
+    outline: none;
+    box-shadow: none;
+    border: 2px solid $lightgray;
+    font-size: 14px;
+    position: relative;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: $easeall;
+    padding: 0 15px;
+    line-height: 36px;
+    &::-ms-expand {
+        display: none;
+    }
+}
+select:focus {
+    outline: none;
+    border-color: $blue;
+    & + .dropdown-icon {
+        fill: $blue;
+    }
+}
+select:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 #000;
+}
+.select-container {
+    position: relative;
+    cursor: pointer;
+    height: 40px;
+    display: block;
+    width: 100%;
+}
+.dropdown-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    pointer-events: none;
+    fill: $darkgray;
+    transition: $easeall;
+}

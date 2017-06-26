@@ -1,0 +1,5 @@
+<div class="slider-container"
+    (mousedown)="startMoving($event)"
+    (touchstart)="startMoving($event)">
+    <div class="slider-handle" [ngStyle]="{'left': position + 'px'}"></div>
+</div>
